@@ -3,4 +3,5 @@ import attr
 
 @attr.define
 class CliApp:
-    pass
+    def init(self) -> None:
+        pass

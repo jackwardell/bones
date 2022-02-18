@@ -9,7 +9,10 @@ ROOT_DIR = Path(".")
 setup(
     name="magus",
     version=__version__,
-    packages=find_packages(),
+    packages=find_packages(
+        where="src",
+    ),
+    package_dir={"": "src"},
     include_package_data=True,
     author="Jack",
     author_email="jack@mizar.ai",
