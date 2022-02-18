@@ -1,5 +1,6 @@
 import click
 from magus.app import CliApp
+from magus.app import CliAppOutput
 
 
 @click.group()
@@ -12,7 +13,9 @@ def app(ctx: click.Context) -> None:
 @click.pass_context
 def init(ctx: click.Context) -> None:
     click.echo("initialising project")
-    ctx.obj["app"].init()
+    output: CliAppOutput = ctx.obj["app"].init()
+    for msg in output:
+        click.echo(msg)
     click.echo("project initialised")
 
 
