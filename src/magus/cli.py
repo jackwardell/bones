@@ -2,18 +2,15 @@ import click
 
 
 @click.group()
-def app() -> None:
-    pass
+@click.pass_context
+def app(ctx: click.Context) -> None:
+    ctx.obj = {"app": app}
 
 
 @app.command()
-def hello():
-    print("hello")
-
-
-@app.command()
-def greet():
-    click.echo("Hello, World!")
+@click.pass_context
+def init(ctx: click.Context) -> None:
+    click.echo("initialising project")
 
 
 if __name__ == "__main__":
