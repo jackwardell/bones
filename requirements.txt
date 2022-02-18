@@ -1,2 +1,4 @@
 attrs==21.4.0
 click==8.0.3
+requests==2.27.1
+fastapi==0.74.0
