@@ -1,4 +1,5 @@
 from typing import Optional
+from uuid import UUID
 
 import attr
 import requests
@@ -36,7 +37,7 @@ class XYZSDK:
             raise FailedToCreateUserError(output.message)
 
     def get_user(
-        self, user_id: Optional[int], email_address: Optional[str]
+        self, user_id: Optional[UUID], email_address: Optional[str]
     ) -> UserModel:
         resp = self.session.get(
             Paths.USER,

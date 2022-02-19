@@ -8,7 +8,7 @@ from .models import UserModel
 class CreateUserOutput(BaseModel):
     message: str
     success: bool
-    user: UserModel
+    user: Optional[UserModel]
 
 
 class GetUserOutput(BaseModel):

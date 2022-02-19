@@ -1,4 +1,5 @@
 from typing import Optional
+from uuid import UUID
 
 from pydantic import BaseModel
 
@@ -9,5 +10,5 @@ class CreateUserInput(BaseModel):
 
 
 class GetUserInput(BaseModel):
-    user_id: Optional[int]
+    user_id: Optional[UUID]
     email_address: Optional[str]

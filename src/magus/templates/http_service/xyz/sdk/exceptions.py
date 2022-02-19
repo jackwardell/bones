@@ -1,10 +1,10 @@
-class XYZError(Exception):
+class XYZSDKError(Exception):
     pass
 
 
-class FailedToCreateUserError(XYZError):
+class FailedToCreateUserError(XYZSDKError):
     pass
 
 
-class FailedToGetUserError(XYZError):
+class FailedToGetUserError(XYZSDKError):
     pass
