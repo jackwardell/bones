@@ -1,8 +1,11 @@
 """
 todo
 """
+import attr
+import uvicorn
 from fastapi import FastAPI
 
+from ..sdk.config import XYZConfig
 from ..sdk.inputs import CreateUserInput
 from ..sdk.inputs import GetUserInput
 from ..sdk.outputs import CreateUserOutput
@@ -17,7 +20,7 @@ def api_factory(app: XYZApp = XYZApp) -> FastAPI:
     api = FastAPI()
 
     @api.get(Paths.USER, response_model=GetUserOutput)
-    def get_user(i: GetUserInput) -> GetUserOutput:
+    async def get_user(i: GetUserInput) -> GetUserOutput:
         try:
             user = app.get_user(
                 user_id=i.user_id,
@@ -39,7 +42,7 @@ def api_factory(app: XYZApp = XYZApp) -> FastAPI:
             return output
 
     @api.post(Paths.USER, response_model=CreateUserOutput)
-    def create_user(i: CreateUserInput) -> CreateUserOutput:
+    async def create_user(i: CreateUserInput) -> CreateUserOutput:
         try:
             user = app.create_user(
                 email_address=i.email_address,
@@ -61,3 +64,17 @@ def api_factory(app: XYZApp = XYZApp) -> FastAPI:
             return output
 
     return api
+
+
+@attr.define
+class XYZApi:
+    api: FastAPI = attr.Factory(api_factory)
+    config: XYZConfig = attr.Factory(XYZConfig)
+
+    def run(self) -> None:
+        uvicorn.run(
+            self.api,
+            host=self.config.host,
+            port=self.config.port,
+            log_level="info",
+        )
