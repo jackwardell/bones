@@ -28,15 +28,17 @@ class XYZConfig:
     environment: XYZEnvironment = attr.Factory(get_environment)
 
     @property
+    def bind_data(self) -> strictyaml.YAML:
+        return self.data["environments"][self.environment.value]
+
+    @property
     def host(self) -> str:
-        rv = self.data["environments"][self.environment.value][
-            "host"
-        ].as_marked_up()
-        return rv
+        return self.bind_data["host"].as_marked_up()
 
     @property
     def port(self) -> int:
-        rv = self.data["environments"][self.environment.value][
-            "port"
-        ].as_marked_up()
-        return rv
+        return self.bind_data["port"].as_marked_up()
+
+    @property
+    def url(self) -> str:
+        return f"http://{self.host}:{self.port}"

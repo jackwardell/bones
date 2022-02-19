@@ -4,6 +4,7 @@ from uuid import UUID
 import attr
 import requests
 
+from .config import XYZConfig
 from .exceptions import FailedToCreateUserError
 from .exceptions import FailedToGetUserError
 from .inputs import CreateUserInput
@@ -17,12 +18,13 @@ from .paths import Paths
 @attr.define
 class XYZSDK:
     session: requests.Session = attr.Factory(requests.Session)
+    config: XYZConfig = attr.Factory(XYZConfig)
 
     def create_user(
         self, email_address: Optional[str], password_hash: Optional[str]
     ) -> UserModel:
         resp = self.session.get(
-            Paths.USER,
+            self.config.url + Paths.USER,
             json=dict(
                 CreateUserInput(
                     email_address=email_address,
@@ -40,7 +42,7 @@ class XYZSDK:
         self, user_id: Optional[UUID], email_address: Optional[str]
     ) -> UserModel:
         resp = self.session.get(
-            Paths.USER,
+            self.config.url + Paths.USER,
             json=dict(
                 GetUserInput(
                     user_id=user_id,
