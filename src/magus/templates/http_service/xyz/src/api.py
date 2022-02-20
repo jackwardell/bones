@@ -4,13 +4,13 @@ todo
 import attr
 import uvicorn
 from fastapi import FastAPI
+from sdk.config import XYZConfig
+from sdk.inputs import CreateUserInput
+from sdk.inputs import GetUserInput
+from sdk.outputs import CreateUserOutput
+from sdk.outputs import GetUserOutput
+from sdk.paths import Paths
 
-from ..sdk.config import XYZConfig
-from ..sdk.inputs import CreateUserInput
-from ..sdk.inputs import GetUserInput
-from ..sdk.outputs import CreateUserOutput
-from ..sdk.outputs import GetUserOutput
-from ..sdk.paths import Paths
 from .app import XYZApp
 from .exceptions import UserNotCreatedError
 from .exceptions import UserNotFoundError

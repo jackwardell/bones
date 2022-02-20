@@ -9,9 +9,9 @@ SERVICE_ROOT_DIR = pathlib.Path(__file__).parent.parent
 
 
 class XYZEnvironment(enum.Enum):
-    PRODUCTION = "PRODUCTION"
-    STAGING = "STAGING"
-    DEVELOPMENT = "DEVELOPMENT"
+    PRODUCTION = "production"
+    STAGING = "staging"
+    DEVELOPMENT = "development"
 
 
 def load_yaml() -> strictyaml.YAML:

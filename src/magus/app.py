@@ -1,8 +1,12 @@
 import os
 import pathlib
+import shutil
 import typing
 
 import attr
+
+THIS_FILE = pathlib.Path(__file__)
+TEMPLATES_DIR = THIS_FILE.parent / "templates"
 
 APP_DIR_NAME = ".magus"
 SVC_DIR_NAME = "services"
@@ -62,7 +66,16 @@ class CliApp:
             )
 
         else:
-            templates_dir.mkdir()
+            # templates_dir.mkdir()
             output.add(f"{TEMPLATES_DIR_NAME} dir created")
+            # shutil.copytree(TEMPLATES_DIR, templates_dir, fi)
+            shutil.copytree(
+                TEMPLATES_DIR,
+                templates_dir,
+                symlinks=False,
+                ignore=None,
+                ignore_dangling_symlinks=False,
+                dirs_exist_ok=False,
+            )
 
         return output

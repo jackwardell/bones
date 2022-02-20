@@ -4,8 +4,7 @@ import uuid
 from datetime import datetime
 
 import attr
-
-from ..sdk.models import UserModel
+from sdk.models import UserModel
 
 
 @attr.define
