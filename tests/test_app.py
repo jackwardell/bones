@@ -1,7 +1,7 @@
-from magus.app import APP_DIR_NAME
-from magus.app import CliApp
-from magus.app import CliAppOutput
-from magus.app import SVC_DIR_NAME
+from bones.app import APP_DIR_NAME
+from bones.app import CliApp
+from bones.app import CliAppOutput
+from bones.app import SVC_DIR_NAME
 
 
 def test_cli_app_init_neither_dirs_exists(in_tmp_dir) -> None:

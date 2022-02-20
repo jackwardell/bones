@@ -8,7 +8,7 @@ import attr
 THIS_FILE = pathlib.Path(__file__)
 TEMPLATES_DIR = THIS_FILE.parent / "templates"
 
-APP_DIR_NAME = ".magus"
+APP_DIR_NAME = ".bones"
 SVC_DIR_NAME = "services"
 TEMPLATES_DIR_NAME = "templates"
 

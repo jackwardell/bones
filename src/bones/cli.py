@@ -1,6 +1,6 @@
 import click
-from magus.app import CliApp
-from magus.app import CliAppOutput
+from bones.app import CliApp
+from bones.app import CliAppOutput
 
 
 @click.group()
